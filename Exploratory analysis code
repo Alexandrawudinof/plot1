@@ -1,0 +1,132 @@
+bike01<-read.csv("201501-citibike-tripdata.csv")
+bike02<-read.csv("201502-citibike-tripdata.csv")
+bike03<-read.csv("201503-citibike-tripdata.csv")
+bike04<-read.csv("201504-citibike-tripdata.csv")
+bike05<-read.csv("201505-citibike-tripdata.csv")
+bike06<-read.csv("201506-citibike-tripdata.csv")
+bike07<-read.csv("201507-citibike-tripdata.csv")
+bike08<-read.csv("201508-citibike-tripdata.csv")
+bike09<-read.csv("201509-citibike-tripdata.csv")
+bike10<-read.csv("201510-citibike-tripdata.csv")
+bike11<-read.csv("201511-citibike-tripdata.csv")
+bike12<-read.csv("201512-citibike-tripdata.csv")
+##### explotary analysis
+##### histogram for the start_station and end_station for every month
+par(mfrow=c(1,1))
+hist(bike01[, 4], main="201501start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike02[, 4], main="201502start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike03[, 4], main="201503start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike04[, 4], main="201504start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike05[, 4], main="201505start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike06[, 4], main="201506start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike07[, 4], main="201507start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike08[, 4], main="201508start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike09[, 4], main="201509start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike10[, 4], main="201510start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike11[, 4], main="201511start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike12[, 4], main="201512start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+
+#### a<-unique(bike07[,4])[order(unique(bike07[,4]))]
+##### histogram for the start_station and end_station for every season
+
+season1<-rbind(bike01, bike02, bike03)
+hist(season1[, 4], main="2015_season1_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season2<-rbind(bike04, bike05, bike06)
+hist(season2[, 4], main="2015_season2_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season3<-rbind(bike07, bike08, bike09)
+hist(season3[, 4], main="2015_season3_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season4<-rbind(bike10, bike11, bike12)
+hist(season4[, 4], main="2015_season4_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+
+#### total needs by months
+total_2015<-c(nrow(bike01), nrow(bike02), nrow(bike03),nrow(bike04), nrow(bike05), nrow(bike06), nrow(bike07), nrow(bike08), nrow(bike09), nrow(bike10), nrow(bike11), nrow(bike12))
+bike_total_2015<-c(length(unique(bike01$bikeid)), length(unique(bike02$bikeid)), length(unique(bike03$bikeid)), length(unique(bike04$bikeid)), length(unique(bike05$bikeid)), length(unique(bike06$bikeid)),length(unique(bike07$bikeid)),length(unique(bike08$bikeid)),length(unique(bike09$bikeid)),length(unique(bike10$bikeid)),length(unique(bike11$bikeid)),length(unique(bike12$bikeid)))
+bike_total_2015
+station_2015<-c(length(unique(bike01$start.station.id)), length(unique(bike02$start.station.id)), length(unique(bike03$start.station.id)), length(unique(bike04$start.station.id)), length(unique(bike05$start.station.id)), length(unique(bike06$start.station.id)), length(unique(bike07$start.station.id)), length(unique(bike08$start.station.id)), length(unique(bike09$start.station.id)), length(unique(bike10$start.station.id)), length(unique(bike11$start.station.id)), length(unique(bike12$start.station.id)))
+par(mfrow=c(1,1))
+plot(seq(1:12), total_2015, pch =20, type="b", col="red", xlab = "Months", ylab = "Total needs", main = "Total needs")
+plot(seq(1:12), bike_total_2015, pch =20, type="b", col="blue", xlab = "Months", ylab = "Bike needs", main = "Bike needs")
+plot(seq(1:12), station_2015, pch =20, type="b", col="black", xlab = "Months", ylab = "station amount", main = "Station amount")
+
+
+#########2014
+bike01_14<-read.csv("2014-01 - Citi Bike trip data.csv")
+bike02_14<-read.csv("2014-02 - Citi Bike trip data.csv")
+bike03_14<-read.csv("2014-03 - Citi Bike trip data.csv")
+bike04_14<-read.csv("2014-04 - Citi Bike trip data.csv")
+bike05_14<-read.csv("2014-05 - Citi Bike trip data.csv")
+bike06_14<-read.csv("2014-06 - Citi Bike trip data.csv")
+bike07_14<-read.csv("2014-07 - Citi Bike trip data.csv")
+bike08_14<-read.csv("2014-08 - Citi Bike trip data.csv")
+bike09_14<-read.csv("201409-citibike-tripdata.csv")
+bike10_14<-read.csv("201410-citibike-tripdata.csv")
+bike11_14<-read.csv("201411-citibike-tripdata.csv")
+bike12_14<-read.csv("201412-citibike-tripdata.csv")
+
+##### explotary analysis
+##### histogram for the start_station and end_station for every month
+par(mfrow=c(1,1))
+hist(bike01_14[, 4], main="201401start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike02_14[, 4], main="201402start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike03_14[, 4], main="201403start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike04_14[, 4], main="201404start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike05_14[, 4], main="201405start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike06_14[, 4], main="201406start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike07_14[, 4], main="201407start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike08_14[, 4], main="201408start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike09_14[, 4], main="201409start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike10_14[, 4], main="201410start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike11_14[, 4], main="201411start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+hist(bike12_14[, 4], main="201412start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+
+##### histogram for the start_station and end_station for every season
+
+season1_14<-rbind(bike01_14, bike02_14, bike03_14)
+hist(season1_14[, 4], main="2014_season1_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season2_14<-rbind(bike04_14, bike05_14, bike06_14)
+hist(season2_14[, 4], main="2014_season2_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season3_14<-rbind(bike07_14, bike08_14, bike09_14)
+hist(season3_14[, 4], main="2014_season3_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+season4_14<-rbind(bike10_14, bike11_14, bike12_14)
+hist(season4_14[, 4], main="2014_season4_start", xlab = "start_station_index", ylab = "frequency", breaks=c(seq(1,600,10), seq(2000,3300,10)))
+
+#### total needs and real bikes beeded by months
+total_2014<-c(nrow(bike01_14), nrow(bike02_14), nrow(bike03_14),nrow(bike04_14), nrow(bike05_14), nrow(bike06_14), nrow(bike07_14), nrow(bike08_14), nrow(bike09_14), nrow(bike10_14), nrow(bike11_14), nrow(bike12_14))
+bike_total_2014<-c(length(unique(bike01_14$bikeid)), length(unique(bike02_14$bikeid)), length(unique(bike03_14$bikeid)), length(unique(bike04_14$bikeid)), length(unique(bike05_14$bikeid)), length(unique(bike06_14$bikeid)),length(unique(bike07_14$bikeid)),length(unique(bike08_14$bikeid)),length(unique(bike09_14$bikeid)),length(unique(bike10_14$bikeid)),length(unique(bike11_14$bikeid)),length(unique(bike12_14$bikeid)))
+bike_total_2014
+station_2014<-c(length(unique(bike01_14$start.station.id)), length(unique(bike02_14$start.station.id)), length(unique(bike03_14$start.station.id)), length(unique(bike04_14$start.station.id)), length(unique(bike05_14$start.station.id)), length(unique(bike06_14$start.station.id)), length(unique(bike07_14$start.station.id)), length(unique(bike08_14$start.station.id)), length(unique(bike09_14$start.station.id)), length(unique(bike10_14$start.station.id)), length(unique(bike11_14$start.station.id)), length(unique(bike12_14$start.station.id)))
+par(mfrow=c(1,1))
+plot(seq(1:12), total_2014, pch =20, type="b", col="red", xlab = "Months", ylab = "Total needs", main = "Total needs_2014")
+plot(seq(1:12), bike_total_2014, pch =20, type="b", col="blue", xlab = "Months", ylab = "Bike needs", main = "Bike needs_2014")
+plot(seq(1:12), station_2014, pch =20, type="b", col="black", xlab = "Months", ylab = "station amount", main = "Station amount_2014")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
